@@ -99,6 +99,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'RegisterPage',
           path: '/registerPage',
           builder: (context, params) => RegisterPageWidget(),
+        ),
+        FFRoute(
+          name: 'ResetPage',
+          path: '/resetPage',
+          builder: (context, params) => ResetPageWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
