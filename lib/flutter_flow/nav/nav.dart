@@ -77,13 +77,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
       errorBuilder: (context, state) =>
-          appStateNotifier.loggedIn ? HomePageWidget() : LoginPageWidget(),
+          appStateNotifier.loggedIn ? AppStateWidget() : LoginPageWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, _) =>
-              appStateNotifier.loggedIn ? HomePageWidget() : LoginPageWidget(),
+              appStateNotifier.loggedIn ? AppStateWidget() : LoginPageWidget(),
         ),
         FFRoute(
           name: 'HomePage',
@@ -138,6 +138,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => CitiesPageWidget(
             state: params.getParam('state', ParamType.String),
           ),
+        ),
+        FFRoute(
+          name: 'AppState',
+          path: '/appState',
+          builder: (context, params) => AppStateWidget(),
+        ),
+        FFRoute(
+          name: 'SelectedPage',
+          path: '/selectedPage',
+          builder: (context, params) => SelectedPageWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

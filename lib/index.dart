@@ -11,3 +11,6 @@ export '/home/chat_rooms_page/chat_rooms_page_widget.dart'
     show ChatRoomsPageWidget;
 export '/home/messages_page/messages_page_widget.dart' show MessagesPageWidget;
 export '/home/cities_page/cities_page_widget.dart' show CitiesPageWidget;
+export '/state_management/app_state/app_state_widget.dart' show AppStateWidget;
+export '/state_management/selected_page/selected_page_widget.dart'
+    show SelectedPageWidget;

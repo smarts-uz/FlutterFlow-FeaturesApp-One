@@ -12,17 +12,31 @@ class FFAppState extends ChangeNotifier {
 
   FFAppState._internal();
 
-  Future initializePersistedState() async {}
+  Future initializePersistedState() async {
+    prefs = await SharedPreferences.getInstance();
+    _safeInit(() {
+      _language = prefs.getString('ff_language') ?? _language;
+    });
+  }
 
   void update(VoidCallback callback) {
     callback();
     notifyListeners();
   }
 
+  late SharedPreferences prefs;
+
   bool _showFullList = true;
   bool get showFullList => _showFullList;
   set showFullList(bool _value) {
     _showFullList = _value;
+  }
+
+  String _language = '';
+  String get language => _language;
+  set language(String _value) {
+    _language = _value;
+    prefs.setString('ff_language', _value);
   }
 }
 
