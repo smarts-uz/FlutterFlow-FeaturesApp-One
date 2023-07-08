@@ -114,6 +114,23 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'VerifyCodePage',
           path: '/verifyCodePage',
           builder: (context, params) => VerifyCodePageWidget(),
+        ),
+        FFRoute(
+          name: 'ChatRoomsPage',
+          path: '/chatRoomsPage',
+          builder: (context, params) => ChatRoomsPageWidget(),
+        ),
+        FFRoute(
+          name: 'MessagesPage',
+          path: '/messagesPage',
+          asyncParams: {
+            'chatRoomRecord':
+                getDoc(['chat_rooms'], ChatRoomsRecord.fromSnapshot),
+          },
+          builder: (context, params) => MessagesPageWidget(
+            chatRoomRecord:
+                params.getParam('chatRoomRecord', ParamType.Document),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
