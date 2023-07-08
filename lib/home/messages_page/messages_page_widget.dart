@@ -88,9 +88,7 @@ class _MessagesPageWidgetState extends State<MessagesPageWidget> {
               children: [
                 Expanded(
                   child: StreamBuilder<List<MessagesRecord>>(
-                    stream: queryMessagesRecord(
-                      parent: widget.chatRoomRecord!.reference,
-                    ),
+                    stream: queryMessagesRecord(),
                     builder: (context, snapshot) {
                       // Customize what your widget looks like when it's loading.
                       if (!snapshot.hasData) {
@@ -183,7 +181,7 @@ class _MessagesPageWidgetState extends State<MessagesPageWidget> {
                               widget.chatRoomRecord!.reference)
                           .set(createMessagesRecordData(
                         message: _model.textController.text,
-                        from: currentUserEmail,
+                        from: '',
                       ));
                     },
                     text: 'Send Message',
