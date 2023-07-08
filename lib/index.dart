@@ -16,3 +16,5 @@ export '/state_management/selected_page/selected_page_widget.dart'
     show SelectedPageWidget;
 export '/state_management/page_state_page/page_state_page_widget.dart'
     show PageStatePageWidget;
+export '/state_management/component_state/component_state_widget.dart'
+    show ComponentStateWidget;

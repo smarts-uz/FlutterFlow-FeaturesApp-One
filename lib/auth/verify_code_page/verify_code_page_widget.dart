@@ -145,7 +145,7 @@ class _VerifyCodePageWidgetState extends State<VerifyCodePageWidget> {
                         return;
                       }
 
-                      context.goNamedAuth('PageStatePage', context.mounted);
+                      context.goNamedAuth('ComponentState', context.mounted);
                     },
                     text: 'Verify',
                     options: FFButtonOptions(
