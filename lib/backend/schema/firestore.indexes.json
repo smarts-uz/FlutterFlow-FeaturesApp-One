@@ -1,18 +1,3 @@
 {
-  "indexes": [
-    {
-      "collectionGroup": "cities",
-      "queryScope": "COLLECTION",
-      "fields": [
-        {
-          "fieldPath": "State",
-          "order": "ASCENDING"
-        },
-        {
-          "fieldPath": "LatD",
-          "order": "ASCENDING"
-        }
-      ]
-    }
-  ]
+  "indexes": []
 }
