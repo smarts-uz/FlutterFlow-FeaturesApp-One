@@ -3,6 +3,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'cities_page_model.dart';
@@ -116,23 +117,42 @@ class _CitiesPageWidgetState extends State<CitiesPageWidget> {
                         itemBuilder: (context, listViewIndex) {
                           final listViewCitiesRecord =
                               listViewCitiesRecordList[listViewIndex];
-                          return ListTile(
-                            title: Text(
-                              listViewCitiesRecord.city,
-                              style: FlutterFlowTheme.of(context).titleLarge,
+                          return Slidable(
+                            endActionPane: ActionPane(
+                              motion: const ScrollMotion(),
+                              extentRatio: 0.25,
+                              children: [
+                                SlidableAction(
+                                  label: 'Delete',
+                                  backgroundColor:
+                                      FlutterFlowTheme.of(context).error,
+                                  icon: Icons.delete,
+                                  onPressed: (_) async {
+                                    await listViewCitiesRecord.reference
+                                        .delete();
+                                  },
+                                ),
+                              ],
                             ),
-                            subtitle: Text(
-                              '${listViewCitiesRecord.state} LatD: ${listViewCitiesRecord.latD.toString()}',
-                              style: FlutterFlowTheme.of(context).labelMedium,
+                            child: ListTile(
+                              title: Text(
+                                listViewCitiesRecord.city,
+                                style: FlutterFlowTheme.of(context).titleLarge,
+                              ),
+                              subtitle: Text(
+                                '${listViewCitiesRecord.state} LatD: ${listViewCitiesRecord.latD.toString()}',
+                                style: FlutterFlowTheme.of(context).labelMedium,
+                              ),
+                              trailing: Icon(
+                                Icons.arrow_forward_ios,
+                                color:
+                                    FlutterFlowTheme.of(context).secondaryText,
+                                size: 20.0,
+                              ),
+                              tileColor: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
+                              dense: false,
                             ),
-                            trailing: Icon(
-                              Icons.arrow_forward_ios,
-                              color: FlutterFlowTheme.of(context).secondaryText,
-                              size: 20.0,
-                            ),
-                            tileColor: FlutterFlowTheme.of(context)
-                                .secondaryBackground,
-                            dense: false,
                           );
                         },
                       );
