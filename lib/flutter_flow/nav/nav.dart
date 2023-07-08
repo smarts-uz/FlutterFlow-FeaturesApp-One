@@ -131,6 +131,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             chatRoomRecord:
                 params.getParam('chatRoomRecord', ParamType.Document),
           ),
+        ),
+        FFRoute(
+          name: 'CitiesPage',
+          path: '/citiesPage',
+          builder: (context, params) => CitiesPageWidget(
+            state: params.getParam('state', ParamType.String),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

@@ -10,3 +10,4 @@ export '/auth/verify_code_page/verify_code_page_widget.dart'
 export '/home/chat_rooms_page/chat_rooms_page_widget.dart'
     show ChatRoomsPageWidget;
 export '/home/messages_page/messages_page_widget.dart' show MessagesPageWidget;
+export '/home/cities_page/cities_page_widget.dart' show CitiesPageWidget;

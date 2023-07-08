@@ -88,7 +88,9 @@ class _MessagesPageWidgetState extends State<MessagesPageWidget> {
               children: [
                 Expanded(
                   child: StreamBuilder<List<MessagesRecord>>(
-                    stream: queryMessagesRecord(),
+                    stream: queryMessagesRecord(
+                      parent: widget.chatRoomRecord!.reference,
+                    ),
                     builder: (context, snapshot) {
                       // Customize what your widget looks like when it's loading.
                       if (!snapshot.hasData) {
