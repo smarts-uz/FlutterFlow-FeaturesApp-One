@@ -78,13 +78,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
       errorBuilder: (context, state) =>
-          appStateNotifier.loggedIn ? UsersPageWidget() : LoginPageWidget(),
+          appStateNotifier.loggedIn ? CartPageWidget() : LoginPageWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, _) =>
-              appStateNotifier.loggedIn ? UsersPageWidget() : LoginPageWidget(),
+              appStateNotifier.loggedIn ? CartPageWidget() : LoginPageWidget(),
         ),
         FFRoute(
           name: 'HomePage',
@@ -193,6 +193,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => UpdateProductPageWidget(
             productIndex: params.getParam('productIndex', ParamType.int),
           ),
+        ),
+        FFRoute(
+          name: 'CartPage',
+          path: '/cartPage',
+          builder: (context, params) => CartPageWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

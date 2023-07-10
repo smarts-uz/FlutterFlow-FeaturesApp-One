@@ -122,6 +122,38 @@ class FFAppState extends ChangeNotifier {
   ) {
     _users[_index] = updateFn(_users[_index]);
   }
+
+  List<FruitStruct> _cartFruits = [
+    FruitStruct.fromSerializableMap(jsonDecode(
+        '{\"name\":\"Apple\",\"price\":\"1.2\",\"kgs\":\"1\",\"total_price\":\"1.2\"}')),
+    FruitStruct.fromSerializableMap(jsonDecode(
+        '{\"name\":\"Peach\",\"price\":\"1.7\",\"kgs\":\"1\",\"total_price\":\"1.7\"}')),
+    FruitStruct.fromSerializableMap(jsonDecode(
+        '{\"name\":\"Watermelon\",\"price\":\"2.5\",\"kgs\":\"1\",\"total_price\":\"2.5\"}'))
+  ];
+  List<FruitStruct> get cartFruits => _cartFruits;
+  set cartFruits(List<FruitStruct> _value) {
+    _cartFruits = _value;
+  }
+
+  void addToCartFruits(FruitStruct _value) {
+    _cartFruits.add(_value);
+  }
+
+  void removeFromCartFruits(FruitStruct _value) {
+    _cartFruits.remove(_value);
+  }
+
+  void removeAtIndexFromCartFruits(int _index) {
+    _cartFruits.removeAt(_index);
+  }
+
+  void updateCartFruitsAtIndex(
+    int _index,
+    FruitStruct Function(FruitStruct) updateFn,
+  ) {
+    _cartFruits[_index] = updateFn(_cartFruits[_index]);
+  }
 }
 
 LatLng? _latLngFromString(String? val) {
