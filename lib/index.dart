@@ -23,3 +23,9 @@ export '/api_calls/user_details_page/user_details_page_widget.dart'
     show UserDetailsPageWidget;
 export '/custom_data_types/update_address_page/update_address_page_widget.dart'
     show UpdateAddressPageWidget;
+export '/custom_data_types/products_page/products_page_widget.dart'
+    show ProductsPageWidget;
+export '/custom_data_types/add_product_page/add_product_page_widget.dart'
+    show AddProductPageWidget;
+export '/custom_data_types/update_product_page/update_product_page_widget.dart'
+    show UpdateProductPageWidget;

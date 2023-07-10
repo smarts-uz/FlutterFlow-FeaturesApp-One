@@ -1,35 +1,34 @@
-import '/auth/firebase_auth/auth_util.dart';
-import '/backend/backend.dart';
+import '/backend/schema/structs/index.dart';
+import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'register_page_model.dart';
-export 'register_page_model.dart';
+import 'add_product_page_model.dart';
+export 'add_product_page_model.dart';
 
-class RegisterPageWidget extends StatefulWidget {
-  const RegisterPageWidget({Key? key}) : super(key: key);
+class AddProductPageWidget extends StatefulWidget {
+  const AddProductPageWidget({Key? key}) : super(key: key);
 
   @override
-  _RegisterPageWidgetState createState() => _RegisterPageWidgetState();
+  _AddProductPageWidgetState createState() => _AddProductPageWidgetState();
 }
 
-class _RegisterPageWidgetState extends State<RegisterPageWidget> {
-  late RegisterPageModel _model;
+class _AddProductPageWidgetState extends State<AddProductPageWidget> {
+  late AddProductPageModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => RegisterPageModel());
+    _model = createModel(context, () => AddProductPageModel());
 
     _model.textController1 ??= TextEditingController();
-    _model.emailTextController ??= TextEditingController();
-    _model.passwordTextController ??= TextEditingController();
-    _model.confirmPasswordTextController ??= TextEditingController();
+    _model.textController2 ??= TextEditingController();
+    _model.textController3 ??= TextEditingController();
   }
 
   @override
@@ -51,8 +50,22 @@ class _RegisterPageWidgetState extends State<RegisterPageWidget> {
         appBar: AppBar(
           backgroundColor: FlutterFlowTheme.of(context).primary,
           automaticallyImplyLeading: false,
+          leading: FlutterFlowIconButton(
+            borderColor: Colors.transparent,
+            borderRadius: 30.0,
+            borderWidth: 1.0,
+            buttonSize: 60.0,
+            icon: Icon(
+              Icons.arrow_back_rounded,
+              color: Colors.white,
+              size: 30.0,
+            ),
+            onPressed: () async {
+              context.pop();
+            },
+          ),
           title: Text(
-            'Register',
+            'Add Product',
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   fontFamily: 'Outfit',
                   color: Colors.white,
@@ -66,7 +79,7 @@ class _RegisterPageWidgetState extends State<RegisterPageWidget> {
         body: SafeArea(
           top: true,
           child: Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 16.0),
+            padding: EdgeInsetsDirectional.fromSTEB(12.0, 12.0, 12.0, 12.0),
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
@@ -81,7 +94,7 @@ class _RegisterPageWidgetState extends State<RegisterPageWidget> {
                         autofocus: true,
                         obscureText: false,
                         decoration: InputDecoration(
-                          labelText: 'Full Name',
+                          labelText: 'Name',
                           labelStyle: FlutterFlowTheme.of(context).labelMedium,
                           hintStyle: FlutterFlowTheme.of(context).labelMedium,
                           enabledBorder: OutlineInputBorder(
@@ -121,11 +134,11 @@ class _RegisterPageWidgetState extends State<RegisterPageWidget> {
                         padding:
                             EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
                         child: TextFormField(
-                          controller: _model.emailTextController,
+                          controller: _model.textController2,
                           autofocus: true,
                           obscureText: false,
                           decoration: InputDecoration(
-                            labelText: 'Email',
+                            labelText: 'Price',
                             labelStyle:
                                 FlutterFlowTheme.of(context).labelMedium,
                             hintStyle: FlutterFlowTheme.of(context).labelMedium,
@@ -159,8 +172,9 @@ class _RegisterPageWidgetState extends State<RegisterPageWidget> {
                             ),
                           ),
                           style: FlutterFlowTheme.of(context).bodyMedium,
-                          keyboardType: TextInputType.emailAddress,
-                          validator: _model.emailTextControllerValidator
+                          keyboardType: const TextInputType.numberWithOptions(
+                              decimal: true),
+                          validator: _model.textController2Validator
                               .asValidator(context),
                         ),
                       ),
@@ -168,11 +182,11 @@ class _RegisterPageWidgetState extends State<RegisterPageWidget> {
                         padding:
                             EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
                         child: TextFormField(
-                          controller: _model.passwordTextController,
+                          controller: _model.textController3,
                           autofocus: true,
-                          obscureText: !_model.passwordVisibility1,
+                          obscureText: false,
                           decoration: InputDecoration(
-                            labelText: 'Password',
+                            labelText: 'Description',
                             labelStyle:
                                 FlutterFlowTheme.of(context).labelMedium,
                             hintStyle: FlutterFlowTheme.of(context).labelMedium,
@@ -204,86 +218,9 @@ class _RegisterPageWidgetState extends State<RegisterPageWidget> {
                               ),
                               borderRadius: BorderRadius.circular(12.0),
                             ),
-                            suffixIcon: InkWell(
-                              onTap: () => setState(
-                                () => _model.passwordVisibility1 =
-                                    !_model.passwordVisibility1,
-                              ),
-                              focusNode: FocusNode(skipTraversal: true),
-                              child: Icon(
-                                _model.passwordVisibility1
-                                    ? Icons.visibility_outlined
-                                    : Icons.visibility_off_outlined,
-                                color:
-                                    FlutterFlowTheme.of(context).secondaryText,
-                                size: 24.0,
-                              ),
-                            ),
                           ),
                           style: FlutterFlowTheme.of(context).bodyMedium,
-                          validator: _model.passwordTextControllerValidator
-                              .asValidator(context),
-                        ),
-                      ),
-                      Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
-                        child: TextFormField(
-                          controller: _model.confirmPasswordTextController,
-                          autofocus: true,
-                          obscureText: !_model.passwordVisibility2,
-                          decoration: InputDecoration(
-                            labelText: 'Confirm Password',
-                            labelStyle:
-                                FlutterFlowTheme.of(context).labelMedium,
-                            hintStyle: FlutterFlowTheme.of(context).labelMedium,
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: FlutterFlowTheme.of(context).alternate,
-                                width: 2.0,
-                              ),
-                              borderRadius: BorderRadius.circular(12.0),
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: FlutterFlowTheme.of(context).primary,
-                                width: 2.0,
-                              ),
-                              borderRadius: BorderRadius.circular(12.0),
-                            ),
-                            errorBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: FlutterFlowTheme.of(context).error,
-                                width: 2.0,
-                              ),
-                              borderRadius: BorderRadius.circular(12.0),
-                            ),
-                            focusedErrorBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: FlutterFlowTheme.of(context).error,
-                                width: 2.0,
-                              ),
-                              borderRadius: BorderRadius.circular(12.0),
-                            ),
-                            suffixIcon: InkWell(
-                              onTap: () => setState(
-                                () => _model.passwordVisibility2 =
-                                    !_model.passwordVisibility2,
-                              ),
-                              focusNode: FocusNode(skipTraversal: true),
-                              child: Icon(
-                                _model.passwordVisibility2
-                                    ? Icons.visibility_outlined
-                                    : Icons.visibility_off_outlined,
-                                color:
-                                    FlutterFlowTheme.of(context).secondaryText,
-                                size: 24.0,
-                              ),
-                            ),
-                          ),
-                          style: FlutterFlowTheme.of(context).bodyMedium,
-                          validator: _model
-                              .confirmPasswordTextControllerValidator
+                          validator: _model.textController3Validator
                               .asValidator(context),
                         ),
                       ),
@@ -296,50 +233,22 @@ class _RegisterPageWidgetState extends State<RegisterPageWidget> {
                                 !_model.formKey.currentState!.validate()) {
                               return;
                             }
-                            GoRouter.of(context).prepareAuthEvent();
-                            if (_model.passwordTextController.text !=
-                                _model.confirmPasswordTextController.text) {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(
-                                  content: Text(
-                                    'Passwords don\'t match!',
-                                  ),
-                                ),
-                              );
-                              return;
-                            }
-
-                            final user =
-                                await authManager.createAccountWithEmail(
-                              context,
-                              _model.emailTextController.text,
-                              _model.passwordTextController.text,
-                            );
-                            if (user == null) {
-                              return;
-                            }
-
-                            await UsersRecord.collection
-                                .doc(user.uid)
-                                .update(createUsersRecordData(
-                                  displayName: _model.textController1.text,
-                                  email: _model.emailTextController.text,
-                                  photoUrl: '',
-                                  createdTime: getCurrentTimestamp,
-                                  phoneNumber: '',
-                                ));
-
-                            await authManager.sendEmailVerification();
-
-                            context.goNamedAuth(
-                                'ProductsPage', context.mounted);
+                            setState(() {
+                              FFAppState().addToProducts(ProductStruct(
+                                id: getCurrentTimestamp.microsecondsSinceEpoch,
+                                name: _model.textController1.text,
+                                price: double.tryParse(
+                                    _model.textController2.text),
+                                description: _model.textController3.text,
+                              ));
+                            });
+                            context.safePop();
                           },
-                          text: 'Register',
+                          text: 'Add',
                           options: FFButtonOptions(
-                            width: double.infinity,
-                            height: 48.0,
+                            height: 40.0,
                             padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 0.0, 0.0),
+                                24.0, 0.0, 24.0, 0.0),
                             iconPadding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
                             color: FlutterFlowTheme.of(context).primary,
@@ -349,34 +258,10 @@ class _RegisterPageWidgetState extends State<RegisterPageWidget> {
                                   fontFamily: 'Readex Pro',
                                   color: Colors.white,
                                 ),
-                            elevation: 0.0,
                             borderSide: BorderSide(
                               color: Colors.transparent,
-                              width: 1.0,
                             ),
-                            borderRadius: BorderRadius.circular(8.0),
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
-                        child: InkWell(
-                          splashColor: Colors.transparent,
-                          focusColor: Colors.transparent,
-                          hoverColor: Colors.transparent,
-                          highlightColor: Colors.transparent,
-                          onTap: () async {
-                            context.goNamed('LoginPage');
-                          },
-                          child: Text(
-                            'Login',
-                            style: FlutterFlowTheme.of(context)
-                                .bodyLarge
-                                .override(
-                                  fontFamily: 'Readex Pro',
-                                  color: FlutterFlowTheme.of(context).primary,
-                                ),
+                            borderRadius: BorderRadius.circular(12.0),
                           ),
                         ),
                       ),

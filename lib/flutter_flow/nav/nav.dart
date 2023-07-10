@@ -78,13 +78,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
       errorBuilder: (context, state) =>
-          appStateNotifier.loggedIn ? HomePageWidget() : LoginPageWidget(),
+          appStateNotifier.loggedIn ? ProductsPageWidget() : LoginPageWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
-          builder: (context, _) =>
-              appStateNotifier.loggedIn ? HomePageWidget() : LoginPageWidget(),
+          builder: (context, _) => appStateNotifier.loggedIn
+              ? ProductsPageWidget()
+              : LoginPageWidget(),
         ),
         FFRoute(
           name: 'HomePage',
@@ -176,6 +177,23 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'UpdateAddressPage',
           path: '/updateAddressPage',
           builder: (context, params) => UpdateAddressPageWidget(),
+        ),
+        FFRoute(
+          name: 'ProductsPage',
+          path: '/productsPage',
+          builder: (context, params) => ProductsPageWidget(),
+        ),
+        FFRoute(
+          name: 'AddProductPage',
+          path: '/addProductPage',
+          builder: (context, params) => AddProductPageWidget(),
+        ),
+        FFRoute(
+          name: 'UpdateProductPage',
+          path: '/updateProductPage',
+          builder: (context, params) => UpdateProductPageWidget(
+            productIndex: params.getParam('productIndex', ParamType.int),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

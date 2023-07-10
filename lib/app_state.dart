@@ -19,6 +19,21 @@ class FFAppState extends ChangeNotifier {
     _safeInit(() {
       _language = prefs.getString('ff_language') ?? _language;
     });
+    _safeInit(() {
+      _products = prefs
+              .getStringList('ff_products')
+              ?.map((x) {
+                try {
+                  return ProductStruct.fromSerializableMap(jsonDecode(x));
+                } catch (e) {
+                  print("Can't decode persisted data type. Error: $e.");
+                  return null;
+                }
+              })
+              .withoutNulls
+              .toList() ??
+          _products;
+    });
   }
 
   void update(VoidCallback callback) {
@@ -39,6 +54,48 @@ class FFAppState extends ChangeNotifier {
   set language(String _value) {
     _language = _value;
     prefs.setString('ff_language', _value);
+  }
+
+  List<ProductStruct> _products = [
+    ProductStruct.fromSerializableMap(jsonDecode(
+        '{\"id\":\"0\",\"name\":\"Laptop\",\"price\":\"999.9\",\"description\":\"Description goes here....\"}')),
+    ProductStruct.fromSerializableMap(jsonDecode(
+        '{\"id\":\"1\",\"name\":\"iPhone 13\",\"price\":\"899\",\"description\":\"Limited offer. Best price\"}')),
+    ProductStruct.fromSerializableMap(jsonDecode(
+        '{\"id\":\"2\",\"name\":\"TV\",\"price\":\"1200\",\"description\":\"Best TV you can find out there\"}'))
+  ];
+  List<ProductStruct> get products => _products;
+  set products(List<ProductStruct> _value) {
+    _products = _value;
+    prefs.setStringList(
+        'ff_products', _value.map((x) => x.serialize()).toList());
+  }
+
+  void addToProducts(ProductStruct _value) {
+    _products.add(_value);
+    prefs.setStringList(
+        'ff_products', _products.map((x) => x.serialize()).toList());
+  }
+
+  void removeFromProducts(ProductStruct _value) {
+    _products.remove(_value);
+    prefs.setStringList(
+        'ff_products', _products.map((x) => x.serialize()).toList());
+  }
+
+  void removeAtIndexFromProducts(int _index) {
+    _products.removeAt(_index);
+    prefs.setStringList(
+        'ff_products', _products.map((x) => x.serialize()).toList());
+  }
+
+  void updateProductsAtIndex(
+    int _index,
+    ProductStruct Function(ProductStruct) updateFn,
+  ) {
+    _products[_index] = updateFn(_products[_index]);
+    prefs.setStringList(
+        'ff_products', _products.map((x) => x.serialize()).toList());
   }
 }
 
