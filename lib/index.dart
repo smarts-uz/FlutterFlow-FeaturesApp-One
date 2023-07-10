@@ -18,3 +18,6 @@ export '/state_management/page_state_page/page_state_page_widget.dart'
     show PageStatePageWidget;
 export '/state_management/component_state/component_state_widget.dart'
     show ComponentStateWidget;
+export '/api_calls/users_page/users_page_widget.dart' show UsersPageWidget;
+export '/api_calls/user_details_page/user_details_page_widget.dart'
+    show UserDetailsPageWidget;
