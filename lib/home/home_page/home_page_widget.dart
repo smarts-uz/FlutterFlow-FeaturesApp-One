@@ -163,6 +163,36 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                           ),
                         ),
                       ),
+                      Padding(
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+                        child: FFButtonWidget(
+                          onPressed: () async {
+                            context.pushNamed('UpdateAddressPage');
+                          },
+                          text: 'Navigate to Address Page',
+                          options: FFButtonOptions(
+                            width: double.infinity,
+                            height: 48.0,
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 0.0, 0.0),
+                            iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 0.0, 0.0),
+                            color: FlutterFlowTheme.of(context).primary,
+                            textStyle: FlutterFlowTheme.of(context)
+                                .titleSmall
+                                .override(
+                                  fontFamily: 'Readex Pro',
+                                  color: Colors.white,
+                                ),
+                            borderSide: BorderSide(
+                              color: Colors.transparent,
+                              width: 1.0,
+                            ),
+                            borderRadius: BorderRadius.circular(12.0),
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                 ),

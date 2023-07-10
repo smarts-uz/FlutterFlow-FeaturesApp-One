@@ -21,3 +21,5 @@ export '/state_management/component_state/component_state_widget.dart'
 export '/api_calls/users_page/users_page_widget.dart' show UsersPageWidget;
 export '/api_calls/user_details_page/user_details_page_widget.dart'
     show UserDetailsPageWidget;
+export '/custom_data_types/update_address_page/update_address_page_widget.dart'
+    show UpdateAddressPageWidget;
