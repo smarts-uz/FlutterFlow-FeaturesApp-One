@@ -39,6 +39,12 @@ class GetUsersCall {
       cache: false,
     );
   }
+
+  dynamic allUsers(dynamic response) => getJsonField(
+        response,
+        r'''$.data[:]''',
+        true,
+      );
 }
 
 class GetSingleUserCall {
