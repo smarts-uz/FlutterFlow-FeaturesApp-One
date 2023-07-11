@@ -1,7 +1,6 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -169,14 +168,8 @@ class _CustomActionsPageWidgetState extends State<CustomActionsPageWidget> {
                         padding:
                             EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
                         child: FFButtonWidget(
-                          onPressed: () async {
-                            _model.getGeoHashResult =
-                                await actions.calculateGeoHash(
-                              double.parse(_model.textController1.text),
-                              double.parse(_model.textController2.text),
-                            );
-
-                            setState(() {});
+                          onPressed: () {
+                            print('Button pressed ...');
                           },
                           text: 'Get Geohash',
                           options: FFButtonOptions(
@@ -206,10 +199,7 @@ class _CustomActionsPageWidgetState extends State<CustomActionsPageWidget> {
                 Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
                   child: Text(
-                    valueOrDefault<String>(
-                      _model.getGeoHashResult,
-                      'geoHash',
-                    ),
+                    'Hello World',
                     style: FlutterFlowTheme.of(context).titleLarge,
                   ),
                 ),
