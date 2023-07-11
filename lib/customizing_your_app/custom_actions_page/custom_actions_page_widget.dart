@@ -169,8 +169,7 @@ class _CustomActionsPageWidgetState extends State<CustomActionsPageWidget> {
                             EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
                         child: FFButtonWidget(
                           onPressed: () async {
-                            _model.getGeoHashResult =
-                                await actions.calculateGeoHash(
+                            _model.getGeoHash = await actions.calculateGeoHash(
                               double.parse(_model.textController1.text),
                               double.parse(_model.textController2.text),
                             );
@@ -205,10 +204,7 @@ class _CustomActionsPageWidgetState extends State<CustomActionsPageWidget> {
                 Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
                   child: Text(
-                    valueOrDefault<String>(
-                      _model.getGeoHashResult,
-                      'geoHash',
-                    ),
+                    _model.getGeoHash!,
                     style: FlutterFlowTheme.of(context).titleLarge,
                   ),
                 ),

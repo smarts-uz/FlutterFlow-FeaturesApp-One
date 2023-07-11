@@ -29,7 +29,7 @@ class CustomActionsPageModel extends FlutterFlowModel {
   }
 
   // Stores action output result for [Custom Action - calculateGeoHash] action in Button widget.
-  String? getGeoHashResult;
+  String? getGeoHash;
 
   /// Initialization and disposal methods.
 

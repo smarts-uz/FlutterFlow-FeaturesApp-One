@@ -177,7 +177,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                 0.0, 0.0, 0.0, 0.0),
                             iconPadding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
-                            color: FlutterFlowTheme.of(context).primary,
+                            color: FlutterFlowTheme.of(context).error,
                             textStyle: FlutterFlowTheme.of(context)
                                 .titleSmall
                                 .override(
