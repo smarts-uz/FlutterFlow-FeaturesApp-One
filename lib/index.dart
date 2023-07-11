@@ -31,3 +31,5 @@ export '/custom_data_types/update_product_page/update_product_page_widget.dart'
     show UpdateProductPageWidget;
 export '/customizing_your_app/custom_widgets_page/custom_widgets_page_widget.dart'
     show CustomWidgetsPageWidget;
+export '/customizing_your_app/custom_actions_page/custom_actions_page_widget.dart'
+    show CustomActionsPageWidget;
