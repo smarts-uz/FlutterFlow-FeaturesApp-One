@@ -77,14 +77,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       initialLocation: '/',
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
-      errorBuilder: (context, state) =>
-          appStateNotifier.loggedIn ? CartPageWidget() : LoginPageWidget(),
+      errorBuilder: (context, state) => appStateNotifier.loggedIn
+          ? CustomWidgetsPageWidget()
+          : LoginPageWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
-          builder: (context, _) =>
-              appStateNotifier.loggedIn ? CartPageWidget() : LoginPageWidget(),
+          builder: (context, _) => appStateNotifier.loggedIn
+              ? CustomWidgetsPageWidget()
+              : LoginPageWidget(),
         ),
         FFRoute(
           name: 'HomePage',
@@ -195,9 +197,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           ),
         ),
         FFRoute(
-          name: 'CartPage',
-          path: '/cartPage',
-          builder: (context, params) => CartPageWidget(),
+          name: 'CustomWidgetsPage',
+          path: '/customWidgetsPage',
+          builder: (context, params) => CustomWidgetsPageWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

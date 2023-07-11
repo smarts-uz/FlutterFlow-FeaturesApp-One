@@ -29,5 +29,5 @@ export '/custom_data_types/add_product_page/add_product_page_widget.dart'
     show AddProductPageWidget;
 export '/custom_data_types/update_product_page/update_product_page_widget.dart'
     show UpdateProductPageWidget;
-export '/customizing_your_app/cart_page/cart_page_widget.dart'
-    show CartPageWidget;
+export '/customizing_your_app/custom_widgets_page/custom_widgets_page_widget.dart'
+    show CustomWidgetsPageWidget;

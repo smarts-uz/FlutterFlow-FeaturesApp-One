@@ -331,7 +331,8 @@ class _RegisterPageWidgetState extends State<RegisterPageWidget> {
 
                             await authManager.sendEmailVerification();
 
-                            context.goNamedAuth('CartPage', context.mounted);
+                            context.goNamedAuth(
+                                'CustomWidgetsPage', context.mounted);
                           },
                           text: 'Register',
                           options: FFButtonOptions(

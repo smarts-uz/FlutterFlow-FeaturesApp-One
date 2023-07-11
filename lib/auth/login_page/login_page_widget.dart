@@ -221,7 +221,8 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                               return;
                             }
 
-                            context.goNamedAuth('CartPage', context.mounted);
+                            context.goNamedAuth(
+                                'CustomWidgetsPage', context.mounted);
                           },
                           text: 'Login',
                           options: FFButtonOptions(
@@ -291,7 +292,8 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                               return;
                             }
 
-                            context.goNamedAuth('CartPage', context.mounted);
+                            context.goNamedAuth(
+                                'CustomWidgetsPage', context.mounted);
                           },
                           text: 'Sign in anonymously',
                           options: FFButtonOptions(
