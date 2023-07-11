@@ -145,8 +145,7 @@ class _VerifyCodePageWidgetState extends State<VerifyCodePageWidget> {
                         return;
                       }
 
-                      context.goNamedAuth(
-                          'ConditionalVisibilityPage', context.mounted);
+                      context.goNamedAuth('CurrentTimePage', context.mounted);
                     },
                     text: 'Verify',
                     options: FFButtonOptions(

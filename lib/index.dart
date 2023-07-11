@@ -35,3 +35,5 @@ export '/customizing_your_app/custom_actions_page/custom_actions_page_widget.dar
     show CustomActionsPageWidget;
 export '/advanced_functionality/conditional_visibility_page/conditional_visibility_page_widget.dart'
     show ConditionalVisibilityPageWidget;
+export '/advanced_functionality/current_time_page/current_time_page_widget.dart'
+    show CurrentTimePageWidget;

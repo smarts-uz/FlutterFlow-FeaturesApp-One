@@ -222,7 +222,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                             }
 
                             context.goNamedAuth(
-                                'ConditionalVisibilityPage', context.mounted);
+                                'CurrentTimePage', context.mounted);
                           },
                           text: 'Login',
                           options: FFButtonOptions(
@@ -293,7 +293,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                             }
 
                             context.goNamedAuth(
-                                'ConditionalVisibilityPage', context.mounted);
+                                'CurrentTimePage', context.mounted);
                           },
                           text: 'Sign in anonymously',
                           options: FFButtonOptions(
