@@ -33,3 +33,5 @@ export '/customizing_your_app/custom_widgets_page/custom_widgets_page_widget.dar
     show CustomWidgetsPageWidget;
 export '/customizing_your_app/custom_actions_page/custom_actions_page_widget.dart'
     show CustomActionsPageWidget;
+export '/advanced_functionality/conditional_visibility_page/conditional_visibility_page_widget.dart'
+    show ConditionalVisibilityPageWidget;

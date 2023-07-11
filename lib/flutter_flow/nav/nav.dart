@@ -78,14 +78,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
       errorBuilder: (context, state) => appStateNotifier.loggedIn
-          ? CustomWidgetsPageWidget()
+          ? ConditionalVisibilityPageWidget()
           : LoginPageWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, _) => appStateNotifier.loggedIn
-              ? CustomWidgetsPageWidget()
+              ? ConditionalVisibilityPageWidget()
               : LoginPageWidget(),
         ),
         FFRoute(
@@ -205,6 +205,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'CustomActionsPage',
           path: '/customActionsPage',
           builder: (context, params) => CustomActionsPageWidget(),
+        ),
+        FFRoute(
+          name: 'ConditionalVisibilityPage',
+          path: '/conditionalVisibilityPage',
+          builder: (context, params) => ConditionalVisibilityPageWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

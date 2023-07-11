@@ -154,6 +154,38 @@ class FFAppState extends ChangeNotifier {
   ) {
     _cartFruits[_index] = updateFn(_cartFruits[_index]);
   }
+
+  List<TechproductStruct> _techProducts = [
+    TechproductStruct.fromSerializableMap(
+        jsonDecode('{\"name\":\"Laptop\",\"count_likes\":\"0\"}')),
+    TechproductStruct.fromSerializableMap(
+        jsonDecode('{\"name\":\"Samsung Phone\",\"count_likes\":\"13\"}')),
+    TechproductStruct.fromSerializableMap(
+        jsonDecode('{\"name\":\"TV\",\"count_likes\":\"1\"}'))
+  ];
+  List<TechproductStruct> get techProducts => _techProducts;
+  set techProducts(List<TechproductStruct> _value) {
+    _techProducts = _value;
+  }
+
+  void addToTechProducts(TechproductStruct _value) {
+    _techProducts.add(_value);
+  }
+
+  void removeFromTechProducts(TechproductStruct _value) {
+    _techProducts.remove(_value);
+  }
+
+  void removeAtIndexFromTechProducts(int _index) {
+    _techProducts.removeAt(_index);
+  }
+
+  void updateTechProductsAtIndex(
+    int _index,
+    TechproductStruct Function(TechproductStruct) updateFn,
+  ) {
+    _techProducts[_index] = updateFn(_techProducts[_index]);
+  }
 }
 
 LatLng? _latLngFromString(String? val) {

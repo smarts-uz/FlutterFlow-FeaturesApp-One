@@ -3,4 +3,5 @@ export '/backend/schema/util/schema_util.dart';
 export 'address_struct.dart';
 export 'fruit_struct.dart';
 export 'product_struct.dart';
+export 'techproduct_struct.dart';
 export 'user_struct.dart';
