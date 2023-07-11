@@ -1,5 +1,6 @@
+// ignore_for_file: unused_element
+
 import 'dart:convert';
-import 'dart:typed_data';
 
 import '../../flutter_flow/flutter_flow_util.dart';
 
@@ -53,7 +54,7 @@ class GetSingleUserCall {
   }) {
     return ApiManager.instance.makeApiCall(
       callName: 'getSingleUser',
-      apiUrl: '${UsersGroup.baseUrl}/users/${userId}',
+      apiUrl: '${UsersGroup.baseUrl}/users/$userId',
       callType: ApiCallType.GET,
       headers: {
         ...UsersGroup.headers,
@@ -95,8 +96,8 @@ class AddNewUserCall {
   }) {
     final body = '''
 {
-  "name": "${userName}",
-  "job": "${userJob}"
+  "name": "$userName",
+  "job": "$userJob"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'addNewUser',

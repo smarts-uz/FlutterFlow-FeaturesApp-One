@@ -4,7 +4,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'phone_login_page_model.dart';
 export 'phone_login_page_model.dart';
@@ -129,8 +128,7 @@ class _PhoneLoginPageWidgetState extends State<PhoneLoginPageWidget> {
                   child: FFButtonWidget(
                     onPressed: () async {
                       final phoneNumberVal = _model.textController.text;
-                      if (phoneNumberVal == null ||
-                          phoneNumberVal.isEmpty ||
+                      if (phoneNumberVal.isEmpty ||
                           !phoneNumberVal.startsWith('+')) {
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(

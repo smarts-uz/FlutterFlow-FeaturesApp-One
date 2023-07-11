@@ -4,7 +4,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'verify_code_page_model.dart';
 export 'verify_code_page_model.dart';
@@ -129,7 +128,7 @@ class _VerifyCodePageWidgetState extends State<VerifyCodePageWidget> {
                     onPressed: () async {
                       GoRouter.of(context).prepareAuthEvent();
                       final smsCodeVal = _model.textController.text;
-                      if (smsCodeVal == null || smsCodeVal.isEmpty) {
+                      if (smsCodeVal.isEmpty) {
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
                             content: Text('Enter SMS verification code.'),

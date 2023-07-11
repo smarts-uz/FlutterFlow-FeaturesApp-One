@@ -4,9 +4,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'update_address_page_model.dart';
 export 'update_address_page_model.dart';
@@ -30,17 +28,17 @@ class _UpdateAddressPageWidgetState extends State<UpdateAddressPageWidget> {
     _model = createModel(context, () => UpdateAddressPageModel());
 
     _model.textController1 ??=
-        TextEditingController(text: currentUserDocument?.address?.apartment);
+        TextEditingController(text: currentUserDocument?.address.apartment);
     _model.textController2 ??=
-        TextEditingController(text: currentUserDocument?.address?.street);
+        TextEditingController(text: currentUserDocument?.address.street);
     _model.textController3 ??=
-        TextEditingController(text: currentUserDocument?.address?.city);
+        TextEditingController(text: currentUserDocument?.address.city);
     _model.textController4 ??=
-        TextEditingController(text: currentUserDocument?.address?.state);
+        TextEditingController(text: currentUserDocument?.address.state);
     _model.textController5 ??=
-        TextEditingController(text: currentUserDocument?.address?.country);
+        TextEditingController(text: currentUserDocument?.address.country);
     _model.textController6 ??=
-        TextEditingController(text: currentUserDocument?.address?.zipcode);
+        TextEditingController(text: currentUserDocument?.address.zipcode);
   }
 
   @override
