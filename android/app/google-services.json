@@ -1,0 +1,62 @@
+{
+  "project_info": {
+    "project_number": "755570692737",
+    "project_id": "flutterflow-featuresapp-73161",
+    "storage_bucket": "flutterflow-featuresapp-73161.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:755570692737:android:ea317d1e4c4c5e88eeb380",
+        "android_client_info": {
+          "package_name": "uz.smarts.flutterflowfeaturesappone"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "755570692737-la0em7jub4gpm7ekr45adtrcquje7u3f.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "uz.smarts.flutterflowfeaturesappone",
+            "certificate_hash": "198744db70bf3edfa07d53aadc8587a0bba4ef19"
+          }
+        },
+        {
+          "client_id": "755570692737-p7kpbfur6q6pc7nm1pg3ert84q4h45ce.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "uz.smarts.flutterflowfeaturesappone",
+            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
+          }
+        },
+        {
+          "client_id": "755570692737-4r0u55ja8na24718hl9bmn77lg0jlr9a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAxY7v-bQCLkl3i2RkVr8foIT3E7D8vt5M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "755570692737-4r0u55ja8na24718hl9bmn77lg0jlr9a.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "755570692737-ri4ip03vko8kbhup0bskn70ia76qlrl3.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "uz.smarts.flutterflowfeaturesappone"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
