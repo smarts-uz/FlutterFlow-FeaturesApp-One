@@ -77,145 +77,164 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       initialLocation: '/',
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
-      errorBuilder: (context, state) => appStateNotifier.loggedIn
-          ? CurrentTimePageWidget()
-          : LoginPageWidget(),
+      errorBuilder: (context, state) =>
+          appStateNotifier.loggedIn ? UsersPageWidget() : LoginPageWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
-          builder: (context, _) => appStateNotifier.loggedIn
-              ? CurrentTimePageWidget()
-              : LoginPageWidget(),
+          builder: (context, _) =>
+              appStateNotifier.loggedIn ? UsersPageWidget() : LoginPageWidget(),
+          routes: [
+            FFRoute(
+              name: 'HomePage',
+              path: 'homePage',
+              requireAuth: true,
+              builder: (context, params) => HomePageWidget(),
+            ),
+            FFRoute(
+              name: 'LoginPage',
+              path: 'loginPage',
+              builder: (context, params) => LoginPageWidget(),
+            ),
+            FFRoute(
+              name: 'RegisterPage',
+              path: 'registerPage',
+              builder: (context, params) => RegisterPageWidget(),
+            ),
+            FFRoute(
+              name: 'ResetPage',
+              path: 'resetPage',
+              requireAuth: true,
+              builder: (context, params) => ResetPageWidget(),
+            ),
+            FFRoute(
+              name: 'PhoneLoginPage',
+              path: 'phoneLoginPage',
+              builder: (context, params) => PhoneLoginPageWidget(),
+            ),
+            FFRoute(
+              name: 'VerifyCodePage',
+              path: 'verifyCodePage',
+              builder: (context, params) => VerifyCodePageWidget(),
+            ),
+            FFRoute(
+              name: 'ChatRoomsPage',
+              path: 'chatRoomsPage',
+              requireAuth: true,
+              builder: (context, params) => ChatRoomsPageWidget(),
+            ),
+            FFRoute(
+              name: 'MessagesPage',
+              path: 'messagesPage',
+              requireAuth: true,
+              asyncParams: {
+                'chatRoomRecord':
+                    getDoc(['chat_rooms'], ChatRoomsRecord.fromSnapshot),
+              },
+              builder: (context, params) => MessagesPageWidget(
+                chatRoomRecord:
+                    params.getParam('chatRoomRecord', ParamType.Document),
+              ),
+            ),
+            FFRoute(
+              name: 'CitiesPage',
+              path: 'citiesPage',
+              requireAuth: true,
+              builder: (context, params) => CitiesPageWidget(
+                state: params.getParam('state', ParamType.String),
+              ),
+            ),
+            FFRoute(
+              name: 'AppState',
+              path: 'appState',
+              requireAuth: true,
+              builder: (context, params) => AppStateWidget(),
+            ),
+            FFRoute(
+              name: 'SelectedPage',
+              path: 'selectedPage',
+              requireAuth: true,
+              builder: (context, params) => SelectedPageWidget(),
+            ),
+            FFRoute(
+              name: 'PageStatePage',
+              path: 'pageStatePage',
+              requireAuth: true,
+              builder: (context, params) => PageStatePageWidget(),
+            ),
+            FFRoute(
+              name: 'ComponentState',
+              path: 'componentState',
+              requireAuth: true,
+              builder: (context, params) => ComponentStateWidget(),
+            ),
+            FFRoute(
+              name: 'UsersPage',
+              path: 'usersPage',
+              requireAuth: true,
+              builder: (context, params) => UsersPageWidget(),
+            ),
+            FFRoute(
+              name: 'UserDetailsPage',
+              path: 'userDetailsPage',
+              requireAuth: true,
+              builder: (context, params) => UserDetailsPageWidget(
+                userId: params.getParam('userId', ParamType.int),
+              ),
+            ),
+            FFRoute(
+              name: 'UpdateAddressPage',
+              path: 'updateAddressPage',
+              requireAuth: true,
+              builder: (context, params) => UpdateAddressPageWidget(),
+            ),
+            FFRoute(
+              name: 'ProductsPage',
+              path: 'productsPage',
+              requireAuth: true,
+              builder: (context, params) => ProductsPageWidget(),
+            ),
+            FFRoute(
+              name: 'AddProductPage',
+              path: 'addProductPage',
+              requireAuth: true,
+              builder: (context, params) => AddProductPageWidget(),
+            ),
+            FFRoute(
+              name: 'UpdateProductPage',
+              path: 'updateProductPage',
+              requireAuth: true,
+              builder: (context, params) => UpdateProductPageWidget(
+                productIndex: params.getParam('productIndex', ParamType.int),
+              ),
+            ),
+            FFRoute(
+              name: 'CustomWidgetsPage',
+              path: 'customWidgetsPage',
+              requireAuth: true,
+              builder: (context, params) => CustomWidgetsPageWidget(),
+            ),
+            FFRoute(
+              name: 'CustomActionsPage',
+              path: 'customActionsPage',
+              requireAuth: true,
+              builder: (context, params) => CustomActionsPageWidget(),
+            ),
+            FFRoute(
+              name: 'ConditionalVisibilityPage',
+              path: 'conditionalVisibilityPage',
+              requireAuth: true,
+              builder: (context, params) => ConditionalVisibilityPageWidget(),
+            ),
+            FFRoute(
+              name: 'CurrentTimePage',
+              path: 'currentTimePage',
+              requireAuth: true,
+              builder: (context, params) => CurrentTimePageWidget(),
+            )
+          ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),
-        FFRoute(
-          name: 'HomePage',
-          path: '/homePage',
-          builder: (context, params) => HomePageWidget(),
-        ),
-        FFRoute(
-          name: 'LoginPage',
-          path: '/loginPage',
-          builder: (context, params) => LoginPageWidget(),
-        ),
-        FFRoute(
-          name: 'RegisterPage',
-          path: '/registerPage',
-          builder: (context, params) => RegisterPageWidget(),
-        ),
-        FFRoute(
-          name: 'ResetPage',
-          path: '/resetPage',
-          builder: (context, params) => ResetPageWidget(),
-        ),
-        FFRoute(
-          name: 'PhoneLoginPage',
-          path: '/phoneLoginPage',
-          builder: (context, params) => PhoneLoginPageWidget(),
-        ),
-        FFRoute(
-          name: 'VerifyCodePage',
-          path: '/verifyCodePage',
-          builder: (context, params) => VerifyCodePageWidget(),
-        ),
-        FFRoute(
-          name: 'ChatRoomsPage',
-          path: '/chatRoomsPage',
-          builder: (context, params) => ChatRoomsPageWidget(),
-        ),
-        FFRoute(
-          name: 'MessagesPage',
-          path: '/messagesPage',
-          asyncParams: {
-            'chatRoomRecord':
-                getDoc(['chat_rooms'], ChatRoomsRecord.fromSnapshot),
-          },
-          builder: (context, params) => MessagesPageWidget(
-            chatRoomRecord:
-                params.getParam('chatRoomRecord', ParamType.Document),
-          ),
-        ),
-        FFRoute(
-          name: 'CitiesPage',
-          path: '/citiesPage',
-          builder: (context, params) => CitiesPageWidget(
-            state: params.getParam('state', ParamType.String),
-          ),
-        ),
-        FFRoute(
-          name: 'AppState',
-          path: '/appState',
-          builder: (context, params) => AppStateWidget(),
-        ),
-        FFRoute(
-          name: 'SelectedPage',
-          path: '/selectedPage',
-          builder: (context, params) => SelectedPageWidget(),
-        ),
-        FFRoute(
-          name: 'PageStatePage',
-          path: '/pageStatePage',
-          builder: (context, params) => PageStatePageWidget(),
-        ),
-        FFRoute(
-          name: 'ComponentState',
-          path: '/componentState',
-          builder: (context, params) => ComponentStateWidget(),
-        ),
-        FFRoute(
-          name: 'UsersPage',
-          path: '/usersPage',
-          builder: (context, params) => UsersPageWidget(),
-        ),
-        FFRoute(
-          name: 'UserDetailsPage',
-          path: '/userDetailsPage',
-          builder: (context, params) => UserDetailsPageWidget(
-            userId: params.getParam('userId', ParamType.int),
-          ),
-        ),
-        FFRoute(
-          name: 'UpdateAddressPage',
-          path: '/updateAddressPage',
-          builder: (context, params) => UpdateAddressPageWidget(),
-        ),
-        FFRoute(
-          name: 'ProductsPage',
-          path: '/productsPage',
-          builder: (context, params) => ProductsPageWidget(),
-        ),
-        FFRoute(
-          name: 'AddProductPage',
-          path: '/addProductPage',
-          builder: (context, params) => AddProductPageWidget(),
-        ),
-        FFRoute(
-          name: 'UpdateProductPage',
-          path: '/updateProductPage',
-          builder: (context, params) => UpdateProductPageWidget(
-            productIndex: params.getParam('productIndex', ParamType.int),
-          ),
-        ),
-        FFRoute(
-          name: 'CustomWidgetsPage',
-          path: '/customWidgetsPage',
-          builder: (context, params) => CustomWidgetsPageWidget(),
-        ),
-        FFRoute(
-          name: 'CustomActionsPage',
-          path: '/customActionsPage',
-          builder: (context, params) => CustomActionsPageWidget(),
-        ),
-        FFRoute(
-          name: 'ConditionalVisibilityPage',
-          path: '/conditionalVisibilityPage',
-          builder: (context, params) => ConditionalVisibilityPageWidget(),
-        ),
-        FFRoute(
-          name: 'CurrentTimePage',
-          path: '/currentTimePage',
-          builder: (context, params) => CurrentTimePageWidget(),
-        )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
 

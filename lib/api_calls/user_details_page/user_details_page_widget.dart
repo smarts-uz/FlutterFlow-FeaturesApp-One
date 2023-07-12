@@ -3,8 +3,10 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:share_plus/share_plus.dart';
 import 'user_details_page_model.dart';
 export 'user_details_page_model.dart';
 
@@ -72,7 +74,27 @@ class _UserDetailsPageWidgetState extends State<UserDetailsPageWidget> {
                   fontSize: 22.0,
                 ),
           ),
-          actions: [],
+          actions: [
+            Builder(
+              builder: (context) => FlutterFlowIconButton(
+                borderColor: Colors.transparent,
+                borderRadius: 25.0,
+                buttonSize: 50.0,
+                fillColor: FlutterFlowTheme.of(context).accent1,
+                icon: FaIcon(
+                  FontAwesomeIcons.solidShareSquare,
+                  color: FlutterFlowTheme.of(context).primaryBackground,
+                  size: 24.0,
+                ),
+                onPressed: () async {
+                  await Share.share(
+                    'testapp://testapp.com${GoRouter.of(context).location}',
+                    sharePositionOrigin: getWidgetBoundingBox(context),
+                  );
+                },
+              ),
+            ),
+          ],
           centerTitle: false,
           elevation: 2.0,
         ),

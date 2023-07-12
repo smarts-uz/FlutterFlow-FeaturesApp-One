@@ -37,10 +37,10 @@
         <key>CFBundleTypeRole</key>
         <string>Editor</string>
         <key>CFBundleURLName</key>
-        <string>flutterflowfeaturesappone.com</string>
+        <string>testapp.com</string>
         <key>CFBundleURLSchemes</key>
         <array>
-        <string>flutterflowfeaturesappone</string>
+        <string>testapp</string>
         </array>
         </dict>
     </array>

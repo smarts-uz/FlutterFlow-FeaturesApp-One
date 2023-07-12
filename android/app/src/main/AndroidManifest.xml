@@ -45,7 +45,7 @@
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="flutterflowfeaturesappone" android:host="flutterflowfeaturesappone.com" />
+                <data android:scheme="testapp" android:host="testapp.com" />
             </intent-filter>
 
         </activity>
