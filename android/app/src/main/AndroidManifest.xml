@@ -2,7 +2,8 @@
     package="uz.smarts.flutterflowfeaturesappone"
     xmlns:tools="http://schemas.android.com/tools">
     <uses-permission android:name="android.permission.INTERNET"/>
-
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
 
     <application
         android:label="FlutterFlow FeaturesApp One"
@@ -45,7 +46,8 @@
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="testapp" android:host="testapp.com" />
+                <data android:scheme="http" android:host="testapp.com" />
+                <data android:scheme="https" />
             </intent-filter>
 
         </activity>

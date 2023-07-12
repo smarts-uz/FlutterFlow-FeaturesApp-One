@@ -37,10 +37,10 @@
         <key>CFBundleTypeRole</key>
         <string>Editor</string>
         <key>CFBundleURLName</key>
-        <string>testapp.com</string>
+        <string>flutter_flow_features_app_one</string>
         <key>CFBundleURLSchemes</key>
         <array>
-        <string>testapp</string>
+        <string>uz.smarts.flutterflowfeaturesappone</string>
         </array>
         </dict>
     </array>
@@ -53,7 +53,8 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 
-
+	<key>NSLocationWhenInUseUsageDescription</key>
+    <string>In order to search nearby, this app requires access to your current location.</string>
 
 
 

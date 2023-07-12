@@ -26,6 +26,7 @@ class _UserDetailsPageWidgetState extends State<UserDetailsPageWidget> {
   late UserDetailsPageModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  LatLng? currentUserLocationValue;
 
   @override
   void initState() {
@@ -87,8 +88,10 @@ class _UserDetailsPageWidgetState extends State<UserDetailsPageWidget> {
                   size: 24.0,
                 ),
                 onPressed: () async {
+                  currentUserLocationValue = await getCurrentUserLocation(
+                      defaultLocation: LatLng(0.0, 0.0));
                   await Share.share(
-                    'testapp://testapp.com${GoRouter.of(context).location}',
+                    currentUserLocationValue!.toString(),
                     sharePositionOrigin: getWidgetBoundingBox(context),
                   );
                 },

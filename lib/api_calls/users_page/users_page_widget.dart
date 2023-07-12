@@ -100,7 +100,7 @@ class _UsersPageWidgetState extends State<UsersPageWidget> {
                           onTap: () async {
                             context.pushNamed(
                               'UserDetailsPage',
-                              queryParameters: {
+                              pathParameters: {
                                 'userId': serializeParam(
                                   usersItem.id,
                                   ParamType.int,
