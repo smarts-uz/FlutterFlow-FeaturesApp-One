@@ -82,15 +82,17 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       refreshListenable: appStateNotifier,
       errorBuilder: (context, state) => _RouteErrorBuilder(
         state: state,
-        child:
-            appStateNotifier.loggedIn ? UsersPageWidget() : LoginPageWidget(),
+        child: appStateNotifier.loggedIn
+            ? AllChatsPageWidget()
+            : LoginPageWidget(),
       ),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
-          builder: (context, _) =>
-              appStateNotifier.loggedIn ? UsersPageWidget() : LoginPageWidget(),
+          builder: (context, _) => appStateNotifier.loggedIn
+              ? AllChatsPageWidget()
+              : LoginPageWidget(),
           routes: [
             FFRoute(
               name: 'HomePage',
@@ -238,6 +240,31 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               path: 'currentTimePage',
               requireAuth: true,
               builder: (context, params) => CurrentTimePageWidget(),
+            ),
+            FFRoute(
+              name: 'ChatPage',
+              path: 'chatPage',
+              requireAuth: true,
+              asyncParams: {
+                'chatUser': getDoc(['users'], UsersRecord.fromSnapshot),
+              },
+              builder: (context, params) => ChatPageWidget(
+                chatUser: params.getParam('chatUser', ParamType.Document),
+                chatRef: params.getParam(
+                    'chatRef', ParamType.DocumentReference, false, ['chats']),
+              ),
+            ),
+            FFRoute(
+              name: 'InviteUserPage',
+              path: 'inviteUserPage',
+              requireAuth: true,
+              builder: (context, params) => InviteUserPageWidget(),
+            ),
+            FFRoute(
+              name: 'AllChatsPage',
+              path: 'allChatsPage',
+              requireAuth: true,
+              builder: (context, params) => AllChatsPageWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),

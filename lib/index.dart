@@ -37,3 +37,8 @@ export '/advanced_functionality/conditional_visibility_page/conditional_visibili
     show ConditionalVisibilityPageWidget;
 export '/advanced_functionality/current_time_page/current_time_page_widget.dart'
     show CurrentTimePageWidget;
+export '/chat/chat_page/chat_page_widget.dart' show ChatPageWidget;
+export '/chat/invite_user_page/invite_user_page_widget.dart'
+    show InviteUserPageWidget;
+export '/chat/all_chats_page/all_chats_page_widget.dart'
+    show AllChatsPageWidget;

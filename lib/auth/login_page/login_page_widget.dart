@@ -221,7 +221,8 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                               return;
                             }
 
-                            context.goNamedAuth('UsersPage', context.mounted);
+                            context.goNamedAuth(
+                                'AllChatsPage', context.mounted);
                           },
                           text: 'Login',
                           options: FFButtonOptions(
@@ -291,7 +292,8 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                               return;
                             }
 
-                            context.goNamedAuth('UsersPage', context.mounted);
+                            context.goNamedAuth(
+                                'AllChatsPage', context.mounted);
                           },
                           text: 'Sign in anonymously',
                           options: FFButtonOptions(
