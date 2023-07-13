@@ -23,6 +23,8 @@ class _CurrentTimePageWidgetState extends State<CurrentTimePageWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => CurrentTimePageModel());
+
+    _model.textController ??= TextEditingController();
   }
 
   @override
@@ -45,7 +47,7 @@ class _CurrentTimePageWidgetState extends State<CurrentTimePageWidget> {
           backgroundColor: FlutterFlowTheme.of(context).primary,
           automaticallyImplyLeading: false,
           title: Text(
-            'Global Properties',
+            'Code Expression',
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   fontFamily: 'Outfit',
                   color: Colors.white,
@@ -63,15 +65,56 @@ class _CurrentTimePageWidgetState extends State<CurrentTimePageWidget> {
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
-                Align(
-                  alignment: AlignmentDirectional(0.0, 0.0),
+                TextFormField(
+                  controller: _model.textController,
+                  autofocus: true,
+                  obscureText: false,
+                  decoration: InputDecoration(
+                    labelText: 'Age',
+                    labelStyle: FlutterFlowTheme.of(context).labelMedium,
+                    hintStyle: FlutterFlowTheme.of(context).labelMedium,
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: FlutterFlowTheme.of(context).alternate,
+                        width: 2.0,
+                      ),
+                      borderRadius: BorderRadius.circular(12.0),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: FlutterFlowTheme.of(context).primary,
+                        width: 2.0,
+                      ),
+                      borderRadius: BorderRadius.circular(12.0),
+                    ),
+                    errorBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: FlutterFlowTheme.of(context).error,
+                        width: 2.0,
+                      ),
+                      borderRadius: BorderRadius.circular(12.0),
+                    ),
+                    focusedErrorBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: FlutterFlowTheme.of(context).error,
+                        width: 2.0,
+                      ),
+                      borderRadius: BorderRadius.circular(12.0),
+                    ),
+                  ),
+                  style: FlutterFlowTheme.of(context).bodyMedium,
+                  validator:
+                      _model.textControllerValidator.asValidator(context),
+                ),
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
                   child: FFButtonWidget(
                     onPressed: () async {
-                      if (isWeb) {
+                      if (int.parse(_model.textController.text) >= 18) {
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
                             content: Text(
-                              'Web',
+                              'You are allowed',
                               style: TextStyle(
                                 color: FlutterFlowTheme.of(context).primaryText,
                               ),
@@ -85,19 +128,18 @@ class _CurrentTimePageWidgetState extends State<CurrentTimePageWidget> {
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
                             content: Text(
-                              'Not Web',
+                              'You are not allowed',
                               style: TextStyle(
                                 color: FlutterFlowTheme.of(context).primaryText,
                               ),
                             ),
                             duration: Duration(milliseconds: 4000),
-                            backgroundColor:
-                                FlutterFlowTheme.of(context).secondary,
+                            backgroundColor: FlutterFlowTheme.of(context).error,
                           ),
                         );
                       }
                     },
-                    text: 'ISWeb',
+                    text: 'Check',
                     options: FFButtonOptions(
                       height: 40.0,
                       padding:
@@ -110,12 +152,11 @@ class _CurrentTimePageWidgetState extends State<CurrentTimePageWidget> {
                                 fontFamily: 'Readex Pro',
                                 color: Colors.white,
                               ),
-                      elevation: 3.0,
                       borderSide: BorderSide(
                         color: Colors.transparent,
                         width: 1.0,
                       ),
-                      borderRadius: BorderRadius.circular(8.0),
+                      borderRadius: BorderRadius.circular(12.0),
                     ),
                   ),
                 ),

@@ -83,7 +83,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       errorBuilder: (context, state) => _RouteErrorBuilder(
         state: state,
         child: appStateNotifier.loggedIn
-            ? AllChatsPageWidget()
+            ? CurrentTimePageWidget()
             : LoginPageWidget(),
       ),
       routes: [
@@ -91,7 +91,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: '_initialize',
           path: '/',
           builder: (context, _) => appStateNotifier.loggedIn
-              ? AllChatsPageWidget()
+              ? CurrentTimePageWidget()
               : LoginPageWidget(),
           routes: [
             FFRoute(
